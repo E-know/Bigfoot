@@ -1,29 +1,31 @@
 [
 	{
 		"date": "2025-04-04",
-		"strength": [
+		"strength": {
+			"description": [
 			"5 SET",
 			"Clean Complex",
 			"- 1 Clean",
 			"- 1 Front Squat",
 			"- 1 Jerk"
-		],
+			]
+		},
 		"wod": {
 			"title": "Helen",
 			"timecap": 15,
-			"rxd": [
+			"scaleRxdDescription": [
 				"For Time",
 				"21-18-15-12-9",
 				"Power Snaches, 75 / 55 lb",
 				"Box Jumps 24\" / 20\"",
 			],
-			"A": [
+			"scaleADescription": [
 				"For Time",
 				"18-15-12-9-6",
 				"Power Snaches, 65 / 55 lb",
 				"Box Jumps 24\" / 20\"",
 			],
-			"B": [
+			"scaleBDescription": [
 				"For Time",
 				"21-18-15-12-9",
 				"Power Snaches, 55 / 35 lb",

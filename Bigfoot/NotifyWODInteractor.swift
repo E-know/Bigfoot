@@ -16,6 +16,12 @@ struct NotifyWODInteractor: NotifyWODInteractorProtocol {
 	
 	init(viewModel: NotifyWODDomainModelProtocol) {
 		self.viewModel = viewModel
+		
+		Task { [self] in
+			let worker = NotifyWODWorker()
+			let workoutInfo = try await worker.workoutInformation()
+			self.viewModel?.workoutInfo = workoutInfo
+		}
 	}
 	
 	func changeWODScale(scale: NotifyWODModels.WODScale) {
