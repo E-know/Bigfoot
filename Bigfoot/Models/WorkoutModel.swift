@@ -9,10 +9,10 @@ import Foundation
 
 struct WorkoutModel: Hashable {
 	let date: Date
-	let strength: StrengthDomain
+	let strength: StrengthDomain?
 	let wod: WODDomain
 	
-	init?(dateString: String, strength: StrengthDomain, wod: WODDomain) {
+	init?(dateString: String, strength: StrengthDomain?, wod: WODDomain) {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd"
 		dateFormatter.locale = Locale(identifier: "ko_KR") // 한국어 설정
@@ -58,7 +58,12 @@ struct WODDomain {
 
 extension WorkoutEntity {
 	func toDomain() -> WorkoutModel? {
-		let strengthDomain = StrengthDomain(description: self.strength.description)
+		let strengthDomain: StrengthDomain? = if let strength {
+			StrengthDomain(description: strength.description)
+		} else {
+			nil
+		}
+		
 		let wodDomain = WODDomain(
 			title: self.wod.title,
 			timecap: self.wod.timecap,

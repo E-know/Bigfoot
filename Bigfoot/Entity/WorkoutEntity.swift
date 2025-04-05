@@ -7,7 +7,7 @@
 
 struct WorkoutEntity: Decodable {
 	let date: String
-	let strength: StrengthEntity
+	let strength: StrengthEntity?
 	let wod: WODEntity
 }
 

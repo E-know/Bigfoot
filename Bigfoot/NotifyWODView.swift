@@ -22,13 +22,13 @@ struct NotifyWODView: View {
 			ScrollView {
 				VStack {
 					if viewModel.workoutInfo.isEmpty == false {
-						WorkoutView(data: viewModel.workoutInfo[0])
+						WorkoutView(workoutInfo: viewModel.workoutInfo[0])
 							.padding(16)
 					}
 					
 					if viewModel.workoutInfo.count > 1 {
 						ForEach(viewModel.workoutInfo[1...], id: \.self) {
-							WorkoutView(data: $0)
+							WorkoutView(workoutInfo: $0)
 						}
 					}
 				}
@@ -54,22 +54,24 @@ extension NotifyWODView {
 
 extension NotifyWODView {
 	@ViewBuilder
-	func WorkoutView(data: WorkoutModel) -> some View {
+	func WorkoutView(workoutInfo: WorkoutModel) -> some View {
 		VStack(alignment: .leading) {
 			Text("오늘의 운동")
 				.font(.system(size: 18, weight: .bold))
 				.padding(.bottom, 8)
 			
-			Text(data.date.dateString)
+			Text(workoutInfo.date.dateString)
 				.font(.system(size: 14))
 				.foregroundStyle(Color.gray)
 				.padding(.bottom, 12)
 			
 			Group {
-				StrengthCell(strengthDomain: data.strength)
-					.padding(.bottom, 20)
+				if let strength = workoutInfo.strength {
+					StrengthCell(strengthDomain: strength)
+						.padding(.bottom, 20)
+				}
 				
-				WODCell(wodDomain: data.wod)
+				WODCell(wodDomain: workoutInfo.wod)
 			}
 			.padding(.leading, 4)
 		}
@@ -174,9 +176,15 @@ extension NotifyWODView {
 			.foregroundStyle(.previousWODTitle)
 			.padding(.bottom, 24)
 			
-			StrengthCell(strengthDomain: workoutInfo.strength)
-			
-			WODCell(wodDomain: workoutInfo.wod)
+			Group {
+				if let strength = workoutInfo.strength {
+					StrengthCell(strengthDomain: strength)
+						.padding(.bottom, 20)
+				}
+				
+				WODCell(wodDomain: workoutInfo.wod)
+			}
+			.padding(.leading, 4)
 		}
 		.padding(.horizontal, 16)
 		.padding(.vertical, 12)

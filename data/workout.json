@@ -32,5 +32,34 @@
 				"Box Jumps 24\" / 20\"",
 			],
 		}
+	},
+	{
+		"date": "2025-04-03",
+		"strength": null,
+		"wod": {
+			"title": "Team of 2",
+			"timecap": 25,
+			"scaleRxdDescription": [
+				"60 Tose To Bar",
+				"80 Dead lift 225 / 155",
+				"100 Box Jump 20\"/20\"",
+				"80 Lateral Burpee",
+				"60 Tose to Bar"
+			],
+			"scaleADescription": [
+				"60 Tose To Bar(눈높이)",
+				"80 Dead lift 185 / 135",
+				"100 Box Jump 20\"/20\"",
+				"80 Lateral Burpee",
+				"60 Tose to Bar(눈높이)",
+			],
+			"scaleBDescription": [
+				"60 Legraise",
+				"80 Dead lift 155 / 105",
+				"100 Box Jump 20\"/20\"",
+				"80 Lateral Burpee",
+				"60 Legraise",
+			],
+		}
 	}
 ]
