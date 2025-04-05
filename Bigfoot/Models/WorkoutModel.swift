@@ -7,26 +7,57 @@
 
 import Foundation
 
-struct WorkoutModel {
-//	let date: Date
+struct WorkoutModel: Hashable {
+	let date: Date
 	let strength: StrengthDomain
 	let wod: WODDomain
+	
+	init?(dateString: String, strength: StrengthDomain, wod: WODDomain) {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+		dateFormatter.locale = Locale(identifier: "ko_KR") // 한국어 설정
+		
+		// 문자열을 Date 객체로 변환
+		guard let date = dateFormatter.date(from: dateString) else { return nil }
+		self.date = date
+		self.strength = strength
+		self.wod = wod
+	}
+	
+	static func == (lhs: Self, rhs: Self) -> Bool {
+		lhs.date.dateString == rhs.date.dateString
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(date)
+	}
 }
 
-struct StrengthDomain: Decodable {
+struct StrengthDomain {
 	let description: [String]
 }
 
-struct WODDomain: Decodable {
+struct WODDomain {
 	let title: String
 	let timecap: Int
 	let scaleRxdDescription: [String]
 	let scaleADescription: [String]
 	let scaleBDescription: [String]
+	
+	func description(scale: NotifyWODModels.WODScale) -> [String] {
+		switch scale {
+			case .Rxd:
+				self.scaleRxdDescription
+			case .A:
+				self.scaleADescription
+			case .B:
+				self.scaleBDescription
+		}
+	}
 }
 
 extension WorkoutEntity {
-	func toDomain() -> WorkoutModel {
+	func toDomain() -> WorkoutModel? {
 		let strengthDomain = StrengthDomain(description: self.strength.description)
 		let wodDomain = WODDomain(
 			title: self.wod.title,
@@ -36,6 +67,7 @@ extension WorkoutEntity {
 			scaleBDescription: self.wod.scaleBDescription
 		)
 		
-		return WorkoutModel(strength: strengthDomain, wod: wodDomain)
+		return WorkoutModel(dateString: self.date,strength: strengthDomain, wod: wodDomain)
 	}
 }
+

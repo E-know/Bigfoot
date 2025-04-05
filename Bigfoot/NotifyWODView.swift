@@ -21,11 +21,16 @@ struct NotifyWODView: View {
 			
 			ScrollView {
 				VStack {
-					WorkoutView()
-						.padding(16)
+					if viewModel.workoutInfo.isEmpty == false {
+						WorkoutView(data: viewModel.workoutInfo[0])
+							.padding(16)
+					}
 					
-					PreviousWorkoutView()
-						.padding(16)
+					if viewModel.workoutInfo.count > 1 {
+						ForEach(viewModel.workoutInfo[1...], id: \.self) {
+							WorkoutView(data: $0)
+						}
+					}
 				}
 			}
 			.background(Color.scrollBackground)
@@ -49,22 +54,22 @@ extension NotifyWODView {
 
 extension NotifyWODView {
 	@ViewBuilder
-	func WorkoutView() -> some View {
+	func WorkoutView(data: WorkoutModel) -> some View {
 		VStack(alignment: .leading) {
 			Text("오늘의 운동")
 				.font(.system(size: 18, weight: .bold))
 				.padding(.bottom, 8)
 			
-			Text("2025년 4월 3일 목요일")
+			Text(data.date.dateString)
 				.font(.system(size: 14))
 				.foregroundStyle(Color.gray)
 				.padding(.bottom, 12)
 			
 			Group {
-				StrengthCell()
+				StrengthCell(strengthDomain: data.strength)
 					.padding(.bottom, 20)
 				
-				WODCell()
+				WODCell(wodDomain: data.wod)
 			}
 			.padding(.leading, 4)
 		}
@@ -75,7 +80,7 @@ extension NotifyWODView {
 	}
 	
 	@ViewBuilder
-	func StrengthCell() -> some View {
+	func StrengthCell(strengthDomain: StrengthDomain) -> some View {
 		VStack(alignment: .leading) {
 			Text("Strength")
 				.font(.system(size: 14, weight: .bold))
@@ -88,15 +93,9 @@ extension NotifyWODView {
 					.frame(width: 28)
 				
 				VStack(alignment: .leading, spacing: 4) {
-					Text("5 SET")
-					
-					Text("Clean Complex")
-					
-					Text("- 1 Clean")
-					
-					Text("- 1 Front Squat")
-					
-					Text("- 1 Jerk")
+					ForEach(strengthDomain.description, id: \.self) {
+						Text($0)
+					}
 				}
 				.font(.system(size: 14))
 				.foregroundStyle(.cellFont)
@@ -110,7 +109,7 @@ extension NotifyWODView {
 	}
 	
 	@ViewBuilder
-	func WODCell() -> some View {
+	func WODCell(wodDomain: WODDomain) -> some View {
 		VStack(alignment: .leading) {
 	
 			
@@ -119,7 +118,7 @@ extension NotifyWODView {
 					Text("W.O.D")
 						.font(.system(size: 14, weight: .bold))
 					
-					Text("\"Helen\"")
+					Text("\"\(wodDomain.title)\"")
 						.font(.system(size: 20, weight: .bold))
 						.padding(.trailing, 8)
 				}
@@ -132,7 +131,7 @@ extension NotifyWODView {
 				
 				Spacer()
 				
-				Text("25분")
+				Text("\(wodDomain.timecap)분")
 					.font(.system(size: 14))
 			}
 			
@@ -143,20 +142,9 @@ extension NotifyWODView {
 					.frame(width: 28)
 					
 				VStack(alignment: .leading, spacing: 4) {
-					Text("On the Minutes X 10")
-					
-					Text("3 Power Cleans")
-					
-					Text("3 Front Squats")
-					
-					Text("3 Push Jerks")
-						 
-					Text("Max Lateral Burpees over Barbell")
-					
-					Text("")
-					
-					Text("Bar bell: 135 / 95 lb")
-					
+					ForEach(wodDomain.description(scale: viewModel.scale), id: \.self) {
+						Text($0)
+					}
 				}
 				.font(.system(size: 14))
 				.foregroundStyle(Color.cellFont)
@@ -172,7 +160,7 @@ extension NotifyWODView {
 	}
 	
 	@ViewBuilder
-	func PreviousWorkoutView() -> some View {
+	func PreviousWorkoutView(workoutInfo: WorkoutModel) -> some View {
 		VStack {
 			HStack {
 				Text("이전 WOD")
@@ -186,9 +174,9 @@ extension NotifyWODView {
 			.foregroundStyle(.previousWODTitle)
 			.padding(.bottom, 24)
 			
-			StrengthCell()
+			StrengthCell(strengthDomain: workoutInfo.strength)
 			
-			WODCell()
+			WODCell(wodDomain: workoutInfo.wod)
 		}
 		.padding(.horizontal, 16)
 		.padding(.vertical, 12)

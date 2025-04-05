@@ -20,7 +20,7 @@ struct NotifyWODWorker {
 	
 	func workoutInformation() async throws -> [WorkoutModel] {
 		let entity = try await repository.workoutInformation()
-		return entity.map { $0.toDomain() }
+		return entity.compactMap { $0.toDomain() }
 	}
 }
 

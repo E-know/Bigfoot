@@ -5,10 +5,8 @@
 //  Created by Inho Choi on 4/5/25.
 //
 
-import Foundation
-
 struct WorkoutEntity: Decodable {
-	let date: Date
+	let date: String
 	let strength: StrengthEntity
 	let wod: WODEntity
 }

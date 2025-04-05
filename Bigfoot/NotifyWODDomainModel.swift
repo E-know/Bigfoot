@@ -15,9 +15,5 @@ protocol NotifyWODDomainModelProtocol: AnyObject {
 @Observable
 final class NotifyWODDomainModel: NotifyWODDomainModelProtocol {
 	var scale: NotifyWODModels.WODScale = .Rxd
-	var workoutInfo: [WorkoutModel] = [] {
-		didSet {
-			print(workoutInfo)
-		}
-	}
+	var workoutInfo: [WorkoutModel] = []
 }

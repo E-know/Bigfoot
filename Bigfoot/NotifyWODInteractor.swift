@@ -25,8 +25,6 @@ struct NotifyWODInteractor: NotifyWODInteractorProtocol {
 	}
 	
 	func changeWODScale(scale: NotifyWODModels.WODScale) {
-		withAnimation(.spring) {
-			viewModel?.scale = scale
-		}
+		viewModel?.scale = scale
 	}
 }
