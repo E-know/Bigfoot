@@ -10,9 +10,23 @@
 		5FDEC3B92D9EC6660021E37A /* Bigfoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bigfoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5F2FFEC62DBE4B7D00BADD4A /* Exceptions for "data" folder in "Bigfoot" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				launchData.json,
+				workout.json,
+			);
+			target = 5FDEC3B82D9EC6660021E37A /* Bigfoot */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5F250F0A2DA1698800FD9FCA /* data */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5F2FFEC62DBE4B7D00BADD4A /* Exceptions for "data" folder in "Bigfoot" target */,
+			);
 			path = data;
 			sourceTree = "<group>";
 		};
