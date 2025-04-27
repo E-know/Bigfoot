@@ -32,7 +32,7 @@ struct NotifyWODRepository: NotifyWODRepositoryProtocol {
 	}
 	
 	func workoutInformation() async throws -> [WorkoutEntity] {
-		let urlString = "https://raw.githubusercontent.com/E-know/Bigfoot/refs/heads/main/data/workout.json"
+		let urlString = "https://raw.githubusercontent.com/E-know/Bigfoot/refs/heads/data/JSON/data/workout.json"
 		return try await service.request(urlString: urlString)
 	}
 }

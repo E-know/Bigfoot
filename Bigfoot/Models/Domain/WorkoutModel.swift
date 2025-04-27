@@ -11,6 +11,7 @@ struct WorkoutModel: Hashable {
 	let date: Date
 	let strength: StrengthDomain?
 	let wod: WODDomain
+    var selectedScale: NotifyWODModels.WODScale = .Rxd
 	
 	init?(dateString: String, strength: StrengthDomain?, wod: WODDomain) {
 		let dateFormatter = DateFormatter()
