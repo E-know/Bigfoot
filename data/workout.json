@@ -1,65 +1,63 @@
 [
 	{
-		"date": "2025-04-04",
+		"date": "2025-04-28",
 		"strength": {
 			"description": [
 			"5 SET",
-			"Clean Complex",
-			"- 1 Clean",
-			"- 1 Front Squat",
-			"- 1 Jerk"
+			"- 1 Snatch Balance"
 			]
 		},
 		"wod": {
 			"title": "Helen",
-			"timecap": 15,
+			"timecap": 20,
 			"scaleRxdDescription": [
 				"For Time",
-				"21-18-15-12-9",
-				"Power Snaches, 75 / 55 lb",
-				"Box Jumps 24\" / 20\"",
+				"40 Pull up",
+                "30 Burpee",
+                "20 Power Snatch",
+                "Rest 2:00",
+                "30 Pull up",
+                "20 Burpee",
+                "10 Power Snatch",
+                "Rest 1:00",
+                "20 Pull up",
+                "10 Burpee",
+                "5 Power Snatch",
+                "",
+                "Barbell 115/75"
 			],
 			"scaleADescription": [
-				"For Time",
-				"18-15-12-9-6",
-				"Power Snaches, 65 / 55 lb",
-				"Box Jumps 24\" / 20\"",
+                "For Time",
+                "40 Pull up",
+                "30 Burpee",
+                "20 Power Snatch",
+                "Rest 2:00",
+                "30 Pull up",
+                "20 Burpee",
+                "10 Power Snatch",
+                "Rest 1:00",
+                "20 Pull up",
+                "10 Burpee",
+                "5 Power Snatch",
+                "",
+                "Barbell 95/65"
 			],
 			"scaleBDescription": [
-				"For Time",
-				"21-18-15-12-9",
-				"Power Snaches, 55 / 35 lb",
-				"Box Jumps 24\" / 20\"",
+                "For Time",
+                "40 Pull up",
+                "30 Burpee",
+                "20 Power Snatch",
+                "Rest 2:00",
+                "30 Pull up",
+                "20 Burpee",
+                "10 Power Snatch",
+                "Rest 1:00",
+                "20 Pull up",
+                "10 Burpee",
+                "5 Power Snatch",
+                "",
+                "Barbell 75/55"
 			],
 		}
 	},
-	{
-		"date": "2025-04-03",
-		"strength": null,
-		"wod": {
-			"title": "Team of 2",
-			"timecap": 25,
-			"scaleRxdDescription": [
-				"60 Tose To Bar",
-				"80 Dead lift 225 / 155",
-				"100 Box Jump 20\"/20\"",
-				"80 Lateral Burpee",
-				"60 Tose to Bar"
-			],
-			"scaleADescription": [
-				"60 Tose To Bar(눈높이)",
-				"80 Dead lift 185 / 135",
-				"100 Box Jump 20\"/20\"",
-				"80 Lateral Burpee",
-				"60 Tose to Bar(눈높이)",
-			],
-			"scaleBDescription": [
-				"60 Legraise",
-				"80 Dead lift 155 / 105",
-				"100 Box Jump 20\"/20\"",
-				"80 Lateral Burpee",
-				"60 Legraise",
-			],
-		}
-	}
 ]
